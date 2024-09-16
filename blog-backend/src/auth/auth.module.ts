@@ -5,24 +5,23 @@ import { AuthController } from './auth.controller';
 import { User } from '../users/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import * as dotenv from 'dotenv';
 import { JwtStrategy } from './jwt.strategy';
-
-// Učitaj .env varijable
-dotenv.config();
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule, // Dodaj ConfigModule kako bi mogao pristupiti .env varijablama
     TypeOrmModule.forFeature([User]),
-    JwtModule.register({
-      secret: process.env.JWT_SECRET, // Koristi varijablu iz .env datoteke
-      signOptions: { expiresIn: '1h' },
-    }),
     PassportModule,
+    JwtModule.registerAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        secret: configService.get<string>('JWT_SECRET'), // Učitaj JWT_SECRET iz .env datoteke
+        signOptions: { expiresIn: '1h' }, // Token ističe za 1 sat
+      }),
+    }),
   ],
   providers: [AuthService, JwtStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}
-
-
