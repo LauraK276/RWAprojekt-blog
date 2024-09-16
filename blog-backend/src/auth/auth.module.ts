@@ -6,6 +6,7 @@ import { User } from '../users/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import * as dotenv from 'dotenv';
+import { JwtStrategy } from './jwt.strategy';
 
 // Učitaj .env varijable
 dotenv.config();
@@ -19,7 +20,9 @@ dotenv.config();
     }),
     PassportModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}
+
+
