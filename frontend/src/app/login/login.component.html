@@ -1,1 +1,6 @@
-<p>login works!</p>
+<form (ngSubmit)="login()">
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Korisničko ime" />
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Lozinka" />
+    <button type="submit">Prijavi se</button>
+  </form>
+  

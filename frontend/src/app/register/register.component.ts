@@ -2,11 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  username: string = '';  // Dodaj polje username
+  password: string = '';  // Dodaj polje password
 
+  register() {
+    // Dodaj logiku za registraciju
+    console.log('Korisničko ime:', this.username);
+    console.log('Lozinka:', this.password);
+  }
 }
