@@ -9,23 +9,24 @@ import { PostsModule } from './posts/posts.module';
 import { Post } from './posts/post.entity';
 import { CommentsModule } from './comments/comments.module';
 import { Comment } from './comments/comment.entity'; 
-
-
+import { LikesModule } from './likes/likes.module';
+import { Like } from './likes/like.entity'; 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // Postavi na global kako ne bismo morali ponovno importirati u drugim modulima
+      isGlobal: true, 
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'blog-db.sqlite',
-      entities: [User, Post, Comment], 
+      entities: [User, Post, Like, Comment], 
       synchronize: true,
     }),
     TypeOrmModule.forFeature([User]), 
     AuthModule, 
     PostsModule,
     CommentsModule,
+    LikesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
