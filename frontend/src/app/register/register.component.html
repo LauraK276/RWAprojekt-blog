@@ -1,0 +1,20 @@
+<h2>Registracija</h2>
+
+<form (ngSubmit)="register()">
+  <div>
+    <label for="username">Korisničko ime:</label>
+    <input id="username" type="text" [(ngModel)]="username" name="username" placeholder="Unesite korisničko ime" required />
+  </div>
+
+  <div>
+    <label for="password">Lozinka:</label>
+    <input id="password" type="password" [(ngModel)]="password" name="password" placeholder="Unesite lozinku" required />
+  </div>
+
+  <div>
+    <label for="confirmPassword">Potvrdi lozinku:</label>
+    <input id="confirmPassword" type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Ponovno unesite lozinku" required />
+  </div>
+
+  <button type="submit">Registriraj se</button>
+</form>
