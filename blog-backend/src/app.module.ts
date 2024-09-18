@@ -7,6 +7,8 @@ import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module'; 
 import { PostsModule } from './posts/posts.module';
 import { Post } from './posts/post.entity';
+import { CommentsModule } from './comments/comments.module';
+import { Comment } from './comments/comment.entity'; 
 
 
 @Module({
@@ -17,12 +19,13 @@ import { Post } from './posts/post.entity';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'blog-db.sqlite',
-      entities: [User, Post], 
+      entities: [User, Post, Comment], 
       synchronize: true,
     }),
     TypeOrmModule.forFeature([User]), 
     AuthModule, 
     PostsModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

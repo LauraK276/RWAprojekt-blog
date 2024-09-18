@@ -1,5 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Post } from '../posts/post.entity';
+import { Comment } from '../comments/comment.entity';
+
 
 @Entity()
 export class User {
@@ -17,5 +19,9 @@ export class User {
 
   @OneToMany(() => Post, (post) => post.author) // Provjeri da je import ispravan
   posts: Post[];
+
+  @OneToMany(() => Comment, (comment) => comment.author)
+  comments: Comment[];
+
 
 }
