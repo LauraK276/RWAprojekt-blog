@@ -5,6 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module'; 
+import { PostsModule } from './posts/posts.module';
+import { Post } from './posts/post.entity';
+
 
 @Module({
   imports: [
@@ -14,11 +17,12 @@ import { AuthModule } from './auth/auth.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'blog-db.sqlite',
-      entities: [User], 
+      entities: [User, Post], 
       synchronize: true,
     }),
     TypeOrmModule.forFeature([User]), 
     AuthModule, 
+    PostsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
