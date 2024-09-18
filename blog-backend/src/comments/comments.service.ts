@@ -4,6 +4,9 @@ import { Repository } from 'typeorm';
 import { Comment } from './comment.entity';
 import { Post } from '../posts/post.entity';
 import { User } from '../users/user.entity';
+import { CommentDto } from './comment.dto';
+import { UserDto } from '../users/user.dto';
+
 
 @Injectable()
 export class CommentsService {
@@ -35,11 +38,21 @@ export class CommentsService {
     return this.commentsRepository.save(comment);
   }
 
-  async getCommentsForPost(postId: number): Promise<Comment[]> {
-    return this.commentsRepository.find({
+  async getCommentsForPost(postId: number): Promise<CommentDto[]> {
+    const comments = await this.commentsRepository.find({
       where: { post: { id: postId } },
       relations: ['author'],
     });
+  
+    return comments.map(comment => new CommentDto({
+      id: comment.id,
+      content: comment.content,
+      likes: comment.likes,
+      author: new UserDto({
+        id: comment.author.id,
+        username: comment.author.username,
+      }),
+    }));
   }
 
   async deleteComment(commentId: number, userId: number): Promise<void> {
