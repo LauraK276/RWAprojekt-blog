@@ -1,0 +1,14 @@
+<div class="add-post-container">
+    <h2>Dodaj novi post</h2>
+    
+    <form (ngSubmit)="addPost()">
+      <label for="title">Naslov posta</label>
+      <input type="text" id="title" [(ngModel)]="title" name="title" required>
+  
+      <label for="content">Sadržaj posta</label>
+      <textarea id="content" [(ngModel)]="content" name="content" required></textarea>
+  
+      <button type="submit">Dodaj post</button>
+    </form>
+  </div>
+  

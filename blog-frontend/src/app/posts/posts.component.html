@@ -1,11 +1,12 @@
-<div class="posts-container">
-    <h2>Blog Posts</h2>
+<div class="post-list">
+    <!-- Ovdje se prikazuju postovi -->
     <ul>
-        <li *ngFor="let post of posts">
-          <h3>{{ post.title }}</h3>
-          <p>{{ post.content }}</p>
-        </li>
-      </ul>
-      
+      <li *ngFor="let post of posts">
+        {{ post.title }}
+      </li>
+    </ul>
+  
+    <!-- Gumb za dodavanje novog posta -->
+    <button (click)="navigateToAddPost()">Dodaj novi post</button>
   </div>
   
