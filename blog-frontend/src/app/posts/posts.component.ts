@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core'; // Dodaj OnInit ovdje
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';  // Dodaj HttpClientModule
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,17 +7,17 @@ import { CommonModule } from '@angular/common';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
   standalone: true,
-  imports: [CommonModule]  // Dodaj CommonModule za korištenje *ngFor
+  imports: [CommonModule, HttpClientModule]  // Dodaj HttpClientModule za HTTP zahtjeve
 })
 export class PostsComponent implements OnInit {
-  posts = [
-    { title: 'Post 1', content: 'Ovo je sadržaj posta 1' },
-    { title: 'Post 2', content: 'Ovo je sadržaj posta 2' }
-  ];
+  posts: any[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Implementacija za OnInit ako je potrebna
+    this.http.get<any[]>('http://localhost:3000/posts')
+      .subscribe(data => {
+        this.posts = data;
+      });
   }
 }

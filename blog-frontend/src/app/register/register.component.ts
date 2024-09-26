@@ -1,20 +1,25 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';  // Dodaj HttpClientModule
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [FormsModule]  // Dodaj FormsModule ovdje
+  imports: [FormsModule, HttpClientModule]  // Uključi i HttpClientModule
 })
 export class RegisterComponent {
-  username: string = '';
-  password: string = '';
+  username = '';
+  password = '';
+
+  constructor(private http: HttpClient) {}
 
   register() {
-    // Implementacija za registraciju
-    console.log('Username:', this.username);
-    console.log('Password:', this.password);
+    const registerData = { username: this.username, password: this.password };
+    this.http.post('http://localhost:3000/auth/register', registerData)
+      .subscribe(() => {
+        alert('Registracija uspješna!');
+      });
   }
 }
