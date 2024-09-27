@@ -1,30 +1,28 @@
-import { Controller, Put, Get, Body, UseGuards, Request } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { Controller, Get, Put, Body, UseGuards, Request } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { AuthService } from '../auth/auth.service';
 
+@Controller('users')
+export class UserController {
+  constructor(private readonly authService: AuthService) {}
 
-@Controller('users')  // Ruta je /users
-export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
-
+  // Dohvati profil prijavljenog korisnika
   @UseGuards(JwtAuthGuard)
-  @Get('profile')  // Ruta je /users/profile
-  async getProfile(@Request() req) {
-    return this.usersService.getProfile(req.user.userId);
-  }
+@Get('profile')
+async getProfile(@Request() req) {
+  console.log('Pozvan /users/profile'); // Dodaj ovo
+  const user = await this.authService.getProfile(req.user.userId);
+  return user;
+}
 
 
-
-  // Ruta za ažuriranje korisničkog profila
+  // Ažuriraj profil prijavljenog korisnika (korisničko ime i/ili lozinku)
   @UseGuards(JwtAuthGuard)
   @Put('profile')
   async updateProfile(
     @Request() req,
-    @Body() body: { username: string; password?: string },
+    @Body() body: { username: string; password: string }
   ) {
-    return this.usersService.updateProfile(req.user.userId, body);
+    return this.authService.updateProfile(req.user.userId, body.username, body.password);
   }
 }
-
-
-

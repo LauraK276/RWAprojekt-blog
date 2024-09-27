@@ -2,14 +2,15 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
+import { UserController } from './users.controller';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]), // Ovdje registriraj User entitet
-    // Dodaj i ostale module
+    TypeOrmModule.forFeature([User]),
+    AuthModule
   ],
   providers: [UsersService],
-  controllers: [UsersController],
+  controllers: [UserController],
 })
 export class UsersModule {}
