@@ -92,6 +92,7 @@ async getAllPosts(): Promise<PostDto[]> {
     });
   }
   
+  
 
   async deletePost(id: number): Promise<void> {
     const result = await this.postsRepository.delete(id);
@@ -99,5 +100,6 @@ async getAllPosts(): Promise<PostDto[]> {
       throw new NotFoundException('Post not found');
     }
   }
+  
   
 }

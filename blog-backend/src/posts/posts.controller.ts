@@ -25,14 +25,21 @@ export class PostsController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put(':id')
-  async updatePost(@Param('id') id: number, @Body() body: { title: string; content: string }) {
-    return this.postsService.updatePost(id, body.title, body.content);
-  }
+@Put(':id')
+async updatePost(
+  @Param('id') id: number,
+  @Body() body: { title: string; content: string },
+  @Request() req
+) {
+  return this.postsService.updatePost(id, body.title, body.content);
+}
+
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':id')
-  async deletePost(@Param('id') id: number) {
-    return this.postsService.deletePost(id);
-  }
+@Delete(':id')
+async deletePost(@Param('id') id: number) {
+  return this.postsService.deletePost(id);
+}
+
+  
 }
