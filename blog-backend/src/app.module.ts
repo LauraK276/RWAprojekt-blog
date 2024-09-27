@@ -13,6 +13,7 @@ import { LikesModule } from './likes/likes.module';
 import { Like } from './likes/like.entity';
 import { CommentLike } from './likes/comment-like.entity'; // Importiraj CommentLike ako ga koristiš
 import { CommentLikesModule } from './likes/comment-likes.module';
+import { UsersModule } from './users/users.module';
 
 
 @Module({
@@ -31,6 +32,7 @@ import { CommentLikesModule } from './likes/comment-likes.module';
     CommentsModule,
     LikesModule,
     CommentLikesModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

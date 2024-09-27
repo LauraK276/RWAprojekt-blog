@@ -3,6 +3,7 @@ import { Post } from '../posts/post.entity';
 import { Comment } from '../comments/comment.entity';
 import { Like } from '../likes/like.entity';
 import { CommentLike } from '../likes/comment-like.entity';
+import { Exclude } from 'class-transformer';
 
 
 @Entity()
@@ -13,6 +14,8 @@ export class User {
   @Column({ unique: true })
   username: string;
 
+  
+  @Exclude()  // Ovo isključuje lozinku iz odgovora
   @Column()
   password: string;
 
