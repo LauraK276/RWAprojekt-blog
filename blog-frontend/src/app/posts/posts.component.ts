@@ -1,28 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';  // Dodaj HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
   standalone: true,
-  imports: [CommonModule, HttpClientModule]  // Dodaj HttpClientModule za HTTP zahtjeve
+  imports: [CommonModule, HttpClientModule] // Uključite HttpClientModule
 })
 export class PostsComponent implements OnInit {
   posts: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:3000/posts')
-      .subscribe(data => {
-        this.posts = data;
-      });
+    this.loadPosts();
+  }
+
+  loadPosts() {
+    this.postService.getPosts().subscribe(data => {
+      this.posts = data;
+    });
+  }
+
+  deletePost(postId: number) {
+    this.postService.deletePost(postId).subscribe(() => {
+      this.posts = this.posts.filter(post => post.id !== postId);
+    });
+  }
+
+  editPost(postId: number) {
+    this.router.navigate(['/edit-post', postId]);
   }
 
   navigateToAddPost() {
-    this.router.navigate(['/add-post']);  // Preusmjeravanje na komponentu za dodavanje posta
+    this.router.navigate(['/add-post']);
   }
 }

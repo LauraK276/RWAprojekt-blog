@@ -3,14 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'posts', component: PostsComponent },
+  { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
+  { path: 'register', loadComponent: () => import('./register/register.component').then(m => m.RegisterComponent) },
+  { path: 'posts', loadComponent: () => import('./posts/posts.component').then(m => m.PostsComponent) },
+  { path: 'edit-post/:id', loadComponent: () => import('./edit-post/edit-post.component').then(m => m.EditPostComponent) },
   { path: '', redirectTo: '/posts', pathMatch: 'full' },
   { path: '**', redirectTo: '/posts' }
 ];
@@ -20,11 +18,9 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule, // Dodano za podršku HTTP zahtjevima
-    LoginComponent,
-    RegisterComponent,
-    PostsComponent,
+    HttpClientModule // Ostavite HttpClientModule ovdje
   ],
   providers: [],
+  bootstrap: [] // Nema potrebe za dodavanjem komponenti ovdje
 })
 export class AppModule {}

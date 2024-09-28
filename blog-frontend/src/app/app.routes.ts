@@ -5,6 +5,7 @@ import { PostsComponent } from './posts/posts.component';
 import { AuthGuard } from './auth.guard'; // Importiraj AuthGuard
 import { ProfileComponent } from './profile.component';
 import { AddPostComponent } from './add-post/add-post.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'posts', component: PostsComponent}, 
   { path: 'profile', component: ProfileComponent },
   { path: 'add-post', component: AddPostComponent },
+  { path: 'edit-post/:id', component: EditPostComponent },
   { path: '', redirectTo: '/posts', pathMatch: 'full' },  // Preusmjeravanje na postove ako je URL prazan
   { path: '**', redirectTo: '/posts' }  // Preusmjeravanje na postove za bilo koji nepoznati URL
 ];

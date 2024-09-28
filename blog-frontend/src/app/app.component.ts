@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router'; // Dodajte RouterModule za routerLink
+import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router'; // Uvezite RouterModule
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, RouterModule],  // Dodajte RouterModule ovdje
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']  // Ispravno je styleUrls, ne styleUrl
+  styleUrls: ['./app.component.css'],
+  standalone: true,
+  imports: [HttpClientModule, RouterModule] // Dodajte RouterModule ovdje
 })
 export class AppComponent {
   constructor(private router: Router) {}
