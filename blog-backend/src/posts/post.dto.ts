@@ -1,4 +1,4 @@
-import { User } from '../users/user.entity';
+/* eslint-disable prettier/prettier */
 
 export class PostDto {
   id: number;

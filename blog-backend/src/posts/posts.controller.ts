@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Post, Get, Put, Delete, Body, Param, UseGuards, Request } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -29,7 +30,6 @@ export class PostsController {
 async updatePost(
   @Param('id') id: number,
   @Body() body: { title: string; content: string },
-  @Request() req
 ) {
   return this.postsService.updatePost(id, body.title, body.content);
 }

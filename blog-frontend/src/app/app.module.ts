@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PostsComponent } from './posts/posts.component';
@@ -20,12 +20,11 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    AppComponent, // Umjesto deklaracije, sada uvozimo standalone komponente
+    HttpClientModule, // Dodano za podršku HTTP zahtjevima
     LoginComponent,
     RegisterComponent,
-    PostsComponent
+    PostsComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent] // Ovdje ostaje deklaracija glavne komponente
 })
-export class AppModule { }
+export class AppModule {}
