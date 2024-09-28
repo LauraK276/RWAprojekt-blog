@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+
+body {
+    background-color: #F7EFE5; /* Nježna krem boja za pozadinu */
+    font-family: 'Roboto', sans-serif; /* Moderni font za ugodnije čitanje */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Poboljšanje čitljivosti */
+    color: #3D3D3D; /* Tamno siva za tekst za bolji kontrast */
+}
+
+.container {
+    width: 75%; /* Lagano smanjena širina za skladan izgled */
+    margin: 40px auto; /* Centriranje kontejnera s dodatnim razmakom od vrha */
+    padding: 30px; /* Prošireni unutarnji razmak za prozračnost */
+    background-color: #FFFFFF; /* Bijela pozadina za kontrast s pozadinom stranice */
+    border-radius: 12px; /* Više zaobljeni kutovi za moderniji izgled */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Dublja sjena za vizualnu dubinu */
+    transition: box-shadow 0.3s ease; /* Animacija sjene za interakciju */
+}
+
+.container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sjena se povećava pri hoveru za zanimljiv efekt */
+}
+.like-button {
+    background-color: #4CAF50; /* Svijetlo zelena za Lajkuj */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.like-button:hover {
+    background-color: #45A049; /* Tamnija zelena za hover efekt */
+}
+
+.edit-button {
+    background-color: #FFA500; /* Narančasta za Izmijeni */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #FF8C00; /* Tamnija narančasta za hover efekt */
+}
+
+.delete-button {
+    background-color: #E74C3C; /* Crvena za Obriši */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #C0392B; /* Tamnija crvena za hover efekt */
+}
+
+.comment-button {
+    background-color: #3498DB; /* Plava za Dodaj komentar */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.comment-button:hover {
+    background-color: #2980B9; /* Tamnija plava za hover efekt */
+}
+

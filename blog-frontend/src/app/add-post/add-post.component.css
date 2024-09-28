@@ -1,0 +1,46 @@
+/* add-post.component.css */
+
+.add-post-container {
+    background-color: #fff7e5; /* Svijetla krem boja za pozadinu */
+    padding: 20px; /* Unutarnji razmak */
+    border-radius: 8px; /* Zaobljeni kutovi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lagana sjena */
+    max-width: 600px; /* Maksimalna širina */
+    margin: 0 auto; /* Centriranje */
+}
+
+.add-post-container h2 {
+    color: #5d4a37; /* Topla smeđa boja za naslov */
+    margin-bottom: 20px; /* Razmak ispod naslova */
+}
+
+.add-post-container label {
+    font-size: 1.1rem; /* Veličina fonta za oznake */
+    color: #333; /* Tamna boja za tekst oznaka */
+    display: block; /* Oznake u novom redu */
+    margin-bottom: 5px; /* Razmak ispod oznake */
+}
+
+.add-post-container input[type="text"],
+.add-post-container textarea {
+    width: 100%; /* Postavi širinu na 100% */
+    padding: 10px; /* Unutarnji razmak */
+    border: 1px solid #d05a29; /* Smeđa ivica */
+    border-radius: 5px; /* Zaobljeni kutovi */
+    margin-bottom: 15px; /* Razmak ispod inputa */
+    resize: none; /* Onemogućuje promjenu veličine textarea */
+}
+
+.add-post-container button {
+    background-color: #d05a29; /* Topla narančasta boja za gumb */
+    color: white; /* Bijeli tekst */
+    border: none; /* Ukloni ivicu */
+    padding: 10px 15px; /* Unutarnji razmak */
+    border-radius: 5px; /* Zaobljeni kutovi */
+    cursor: pointer; /* Pokazuje da je gumb klikan */
+    transition: background-color 0.3s ease; /* Efekt prijelaza */
+}
+
+.add-post-container button:hover {
+    background-color: #b04323; /* Tamnija narančasta pri hoveru */
+}

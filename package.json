@@ -19,6 +19,7 @@
     "@angular/common": "^18.2.6",
     "@nestjs/swagger": "^7.4.2",
     "@nestjs/typeorm": "^10.0.2",
+    "bootstrap": "^5.3.3",
     "class-transformer": "^0.5.1",
     "swagger-ui-express": "^5.0.1",
     "typeorm": "^0.3.20"
