@@ -41,5 +41,13 @@ async deletePost(@Param('id') id: number) {
   return this.postsService.deletePost(id);
 }
 
+@UseGuards(JwtAuthGuard)
+@Get('my-posts')
+async getMyPosts(@Request() req) {
+  return this.postsService.getPostsByUser(req.user.userId);
+}
+
+
+
   
 }

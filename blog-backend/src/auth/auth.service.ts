@@ -36,23 +36,26 @@ export class AuthService {
 
   async login(username: string, password: string): Promise<{ accessToken: string }> {
     const user = await this.usersRepository.findOne({ where: { username } });
-
+  
     if (!user) {
       throw new UnauthorizedException('Neispravno korisničko ime ili lozinka.');
     }
-
+  
     // Provjeri lozinku
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       throw new UnauthorizedException('Neispravno korisničko ime ili lozinka.');
     }
-
+  
     // Generiraj JWT token
     const payload = { username: user.username, sub: user.id };
+    console.log('Login - JWT Payload:', payload);  // Dodaj ovo za ispis payloada
+  
     const accessToken = this.jwtService.sign(payload);
-
+  
     return { accessToken };
   }
+  
 
   async getProfile(userId: number): Promise<UserDto> {
     console.log('Pozvan getProfile za userId:', userId); // Dodaj ovo

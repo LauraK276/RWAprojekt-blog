@@ -10,10 +10,12 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
 @Get('profile')
 async getProfile(@Request() req) {
-  console.log('Pozvan /users/profile'); // Dodaj ovo
+  console.log('getProfile - userId iz tokena:', req.user.userId);  // Ispis userId-a iz tokena
   const user = await this.authService.getProfile(req.user.userId);
   return user;
 }
+
+
 
 
   // Ažuriraj profil prijavljenog korisnika (korisničko ime i/ili lozinku)
@@ -25,4 +27,5 @@ async getProfile(@Request() req) {
   ) {
     return this.authService.updateProfile(req.user.userId, body.username, body.password);
   }
+  
 }
