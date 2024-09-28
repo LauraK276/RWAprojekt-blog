@@ -50,4 +50,40 @@ export class PostsComponent implements OnInit {
         console.error('Došlo je do greške prilikom brisanja posta:', error);
       });
   }
+
+  likePost(postId: number) {
+    const token = localStorage.getItem('token');
+  
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    this.http.post(`http://localhost:3000/likes/${postId}`, {}, { headers })
+      .subscribe((updatedPost: any) => {
+        console.log('Post lajkiran!', updatedPost); // Logiraj vraćene podatke
+  
+        // Provjeri vraćene podatke
+        if (updatedPost && updatedPost.id) {
+          const index = this.posts.findIndex(post => post.id === updatedPost.id);
+          if (index !== -1) {
+            this.posts[index] = updatedPost; // Zamijeni stari post s novim podacima
+          } else {
+            console.log('Post s ID-em ' + updatedPost.id + ' nije pronađen.');
+          }
+        } else {
+          console.log('Ažurirani post ne sadrži ispravne podatke:', updatedPost);
+        }
+      }, error => {
+        console.error('Greška prilikom lajkiranja posta:', error);
+      });
+  }
+  
+  
+  // Metoda za učitavanje postova, koja se može pozvati nakon lajkova
+  loadPosts() {
+    this.http.get<any[]>('http://localhost:3000/posts')
+      .subscribe(data => {
+        this.posts = data;
+      });
+  }
 }

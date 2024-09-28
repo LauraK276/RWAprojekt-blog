@@ -3,6 +3,9 @@
   <ul>
     <li *ngFor="let post of posts">
       <h3>{{ post.title }}</h3>
+      <p>{{ post.content }}</p>
+      <button (click)="likePost(post.id)">Lajkuj</button> <!-- Dodaj gumb za lajk -->
+      <span>{{ post.likes?.length || 0 }} Lajkova</span> <!-- Prikaz broja lajkova -->
       <button (click)="navigateToEditPost(post.id)">Izmijeni</button>
       <button (click)="deletePost(post.id)">Obriši</button>
 

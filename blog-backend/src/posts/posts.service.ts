@@ -60,7 +60,10 @@ export class PostsService {
 
   async getPostById(id: number): Promise<PostDto> {
     console.log('getPostById - postId:', id); // Ispis postId
-    const post = await this.postsRepository.findOne({ where: { id }, relations: ['author'] });
+    const post = await this.postsRepository.findOne({
+      where: { id },
+      relations: ['author', 'likes'], // Dodajemo 'likes' ovdje
+    });
     if (!post) {
       throw new NotFoundException('Post not found');
     }
