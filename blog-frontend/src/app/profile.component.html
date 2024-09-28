@@ -1,6 +1,38 @@
 <div class="profile-container">
-    <h2>Profil korisnika</h2>
-    <p><strong>Korisničko ime:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-  </div>
+  <h2>Profil korisnika</h2>
   
+  <!-- Forma za ažuriranje korisničkih podataka -->
+  <form (ngSubmit)="updateProfile()" class="profile-form">
+    
+    <div class="form-group">
+      <label for="username">Korisničko ime:</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="user.username"
+        name="username"
+        class="form-control"
+        required
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="user.email"
+        name="email"
+        class="form-control"
+        required
+      />
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Spremi izmjene</button>
+  </form>
+  
+  <!-- Prikaz trenutnih podataka korisnika -->
+  <h3>Trenutni podaci:</h3>
+  <p><strong>Korisničko ime:</strong> {{ user.username }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+</div>
