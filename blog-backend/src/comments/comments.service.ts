@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -40,21 +41,20 @@ export class CommentsService {
 
   async getCommentsForPost(postId: number): Promise<CommentDto[]> {
     const comments = await this.commentsRepository.find({
-      where: { post: { id: postId } },
-      relations: ['author'],
+        where: { post: { id: postId } },
+        relations: ['author'],
     });
-  
-    return comments.map(comment => new CommentDto({
-      id: comment.id,
-      content: comment.content,
-      likes: comment.likes,
-      author: new UserDto({
-        id: comment.author.id,
-        username: comment.author.username,
-      }),
-    }));
-  }
 
+    return comments.map(comment => new CommentDto({
+        id: comment.id,
+        content: comment.content,
+        likes: comment.likes,
+        author: new UserDto({
+            id: comment.author.id,
+            username: comment.author.username,
+        }),
+    }));
+}
   async deleteComment(commentId: number, userId: number): Promise<void> {
     const comment = await this.commentsRepository.findOne({
       where: { id: commentId, author: { id: userId } },

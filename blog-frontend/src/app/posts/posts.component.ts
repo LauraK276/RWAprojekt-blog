@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';  // Uvezi HttpHeaders
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CommentComponent } from '../comment/comment.component';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
   standalone: true,
-  imports: [CommonModule, HttpClientModule]  // Dodaj HttpClientModule za HTTP zahtjeve
+  imports: [CommonModule, HttpClientModule, CommentComponent]  // Dodaj HttpClientModule za HTTP zahtjeve
 })
 export class PostsComponent implements OnInit {
   posts: any[] = [];

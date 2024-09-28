@@ -22,7 +22,7 @@ export class LoginComponent {
   login() {
     const loginData = { username: this.username, password: this.password };
     console.log('Sending login request:', loginData);  // Provjera što se šalje
-  
+
     this.http.post('http://localhost:3000/auth/login', loginData)
       .pipe(
         catchError(error => {
@@ -32,7 +32,7 @@ export class LoginComponent {
       )
       .subscribe((response: any) => {
         console.log('Login response:', response);  // Provjera odgovora
-  
+
         if (response && response.accessToken) {  // Promijenjeno s 'token' na 'accessToken'
           localStorage.setItem('token', response.accessToken);  // Spremi 'accessToken' umjesto 'token'
           this.router.navigate(['/posts']);  // Preusmjeri na postove nakon uspješne prijave
@@ -40,7 +40,7 @@ export class LoginComponent {
           console.log('Invalid credentials');  // Ako nema ispravnog tokena
         }
       });
-  }
+}
  
   
 }

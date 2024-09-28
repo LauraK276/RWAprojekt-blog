@@ -1,14 +1,16 @@
 <div class="post-list">
-    <!-- Ovdje se prikazuju postovi -->
-    <ul>
-      <li *ngFor="let post of posts">
-        <h3>{{ post.title }}</h3>
-        <button (click)="navigateToEditPost(post.id)">Izmijeni</button>
-        <button (click)="deletePost(post.id)">Obriši</button>
-      </li>
-    </ul>
-  
-    <!-- Gumb za dodavanje novog posta -->
-    <button (click)="navigateToAddPost()">Dodaj novi post</button>
-  </div>
-  
+  <!-- Ovdje se prikazuju postovi -->
+  <ul>
+    <li *ngFor="let post of posts">
+      <h3>{{ post.title }}</h3>
+      <button (click)="navigateToEditPost(post.id)">Izmijeni</button>
+      <button (click)="deletePost(post.id)">Obriši</button>
+
+      <!-- Uključi komponentu za komentare ovdje -->
+      <app-comment [postId]="post.id"></app-comment>
+    </li>
+  </ul>
+
+  <!-- Gumb za dodavanje novog posta -->
+  <button (click)="navigateToAddPost()">Dodaj novi post</button>
+</div>

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommentsService } from './comments.service';
@@ -10,5 +11,6 @@ import { User } from '../users/user.entity';
   imports: [TypeOrmModule.forFeature([Comment, Post, User])],
   providers: [CommentsService],
   controllers: [CommentsController],
+  exports: [CommentsService],
 })
 export class CommentsModule {}

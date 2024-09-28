@@ -1,0 +1,17 @@
+<div class="comment-section">
+    <h3>Komentari</h3>
+  
+    <!-- Prikaz svih komentara -->
+    <ul>
+      <li *ngFor="let comment of comments">
+        <strong>{{ comment.author.username }}:</strong> {{ comment.content }}
+      </li>
+    </ul>
+  
+    <!-- Forma za dodavanje novog komentara -->
+    <form (ngSubmit)="addComment()">
+      <textarea [(ngModel)]="newComment" name="comment" placeholder="Dodajte komentar" required></textarea>
+      <button type="submit">Dodaj komentar</button>
+    </form>
+  </div>
+  

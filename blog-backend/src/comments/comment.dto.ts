@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { UserDto } from '../users/user.dto';
 
 export class CommentDto {
