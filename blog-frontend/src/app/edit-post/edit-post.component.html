@@ -1,1 +1,35 @@
-<p>edit-post works!</p>
+<div class="edit-post-container">
+    <h2>Izmijeni Post</h2>
+    <form (ngSubmit)="updatePost()" class="edit-post-form">
+      
+      <div class="form-group">
+        <label for="title">Naslov:</label>
+        <input
+          type="text"
+          id="title"
+          [(ngModel)]="title"
+          name="title"
+          class="form-control"
+          required
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="content">Sadržaj:</label>
+        <textarea
+          id="content"
+          [(ngModel)]="content"
+          name="content"
+          class="form-control"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+      
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Spremi izmjene</button>
+        <button type="button" class="btn btn-secondary" (click)="router.navigate(['/posts'])">Odustani</button>
+      </div>
+    </form>
+  </div>
+  
