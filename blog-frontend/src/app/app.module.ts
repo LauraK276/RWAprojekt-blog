@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PostsComponent } from './posts/posts.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
+import { ProfileComponent } from './profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'edit-post/:id', component: EditPostComponent },
+  { path: 'profile', loadComponent: () => import('./profile.component').then(m => m.ProfileComponent) },
   { path: '', redirectTo: '/posts', pathMatch: 'full' },
   { path: '**', redirectTo: '/posts' }
 ];
