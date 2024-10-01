@@ -66,6 +66,7 @@ export class PostsComponent implements OnInit {
         if (updatedPost && updatedPost.id) {
           const index = this.posts.findIndex(post => post.id === updatedPost.id);
           if (index !== -1) {
+            console.log('Ažurirani post:', updatedPost);
             this.posts[index] = updatedPost; // Zamijeni stari post s novim podacima
           } else {
             console.log('Post s ID-em ' + updatedPost.id + ' nije pronađen.');

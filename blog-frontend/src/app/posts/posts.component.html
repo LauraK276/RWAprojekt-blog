@@ -8,7 +8,7 @@
         <p class="post-content">{{ post.content }}</p> <!-- Dodajemo klasu za sadržaj -->
         <div class="btn-group" role="group" aria-label="Basic example">
           <button class="btn btn-primary" (click)="likePost(post.id)">Lajkuj</button> <!-- Dodaj gumb za lajk -->
-          <span class="badge bg-secondary ms-2">{{ post.likes?.length || 0 }} Lajkova</span> <!-- Prikaz broja lajkova -->
+          <span class="badge bg-secondary ms-2">{{ post.likes || 0 }} Lajkova</span> <!-- Prikaz broja lajkova -->
           <button class="btn btn-warning" (click)="navigateToEditPost(post.id)">Izmijeni</button>
           <button class="btn btn-danger" (click)="deletePost(post.id)">Obriši</button>
         </div>

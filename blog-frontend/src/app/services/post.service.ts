@@ -19,7 +19,7 @@ export class PostService {
   }
 
   // Možemo dodati i metodu za ažuriranje posta
-  updatePost(postId: number, postData: any): Observable<any> {
+  updatePost(postId: number, postData: { title: string, content: string, likes: number }): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${postId}`, postData);
   }
 }
