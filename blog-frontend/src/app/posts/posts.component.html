@@ -1,24 +1,32 @@
-<div class="container mt-4"> <!-- Dodajemo klasu za marginu od vrha -->
-  <h1 class="mb-4">Moji Postovi</h1>
-  <div class="post-list">
+<div class="container mt-4">
+  <h1 class="moji-postovi">Moji Postovi</h1>
+  <div class="post-list row row-cols-1 row-cols-md-2 g-4"> <!-- Kartični raspored s Bootstrap grid klasama -->
     <!-- Ovdje se prikazuju postovi -->
-    <ul class="list-group"> <!-- Koristimo Bootstrap list-group -->
-      <li *ngFor="let post of posts" class="list-group-item"> <!-- Dodajemo klasu list-group-item -->
-        <h3 class="post-title">{{ post.title }}</h3> <!-- Dodajemo klasu za naslov -->
-        <p class="post-content">{{ post.content }}</p> <!-- Dodajemo klasu za sadržaj -->
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button class="btn btn-primary" (click)="likePost(post.id)">Lajkuj</button> <!-- Dodaj gumb za lajk -->
-          <span class="badge bg-secondary ms-2">{{ post.likes || 0 }} Lajkova</span> <!-- Prikaz broja lajkova -->
-          <button class="btn btn-warning" (click)="navigateToEditPost(post.id)">Izmijeni</button>
-          <button class="btn btn-danger" (click)="deletePost(post.id)">Obriši</button>
+    <div *ngFor="let post of posts" class="col"> <!-- Koristimo kartice za postove -->
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">{{ post.title }}</h3> <!-- Naslov posta -->
+          <p class="card-text">{{ post.content }}</p> <!-- Sadržaj posta -->
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+          <div>
+            <button class="btn btn-primary btn-sm" (click)="likePost(post.id)">Like</button> <!-- Gumb za lajk -->
+            <span class="badge bg-secondary ms-2">{{ post.likes || 0 }} Lajkova</span> <!-- Prikaz broja lajkova -->
+          </div>
+          <div>
+            <button class="btn btn-warning btn-sm me-2" (click)="navigateToEditPost(post.id)">Izmijeni</button>
+            <button class="btn btn-danger btn-sm" (click)="deletePost(post.id)">Obriši</button>
+          </div>
         </div>
         
-        <!-- Uključi komponentu za komentare ovdje -->
-        <app-comment [postId]="post.id"></app-comment>
-      </li>
-    </ul>
+        <!-- Komponenta za komentare -->
+        <div class="card-body">
+          <app-comment [postId]="post.id"></app-comment>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Gumb za dodavanje novog posta -->
-  <button class="btn btn-success mt-3" (click)="navigateToAddPost()">Dodaj novi post</button>
+  <button class="btn btn-success mt-4" (click)="navigateToAddPost()">Dodaj novi post</button>
 </div>

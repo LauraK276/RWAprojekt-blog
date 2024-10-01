@@ -2,28 +2,80 @@
 
 body {
     background-color: #F7EFE5; /* Nježna krem boja za pozadinu */
-    font-family: 'Roboto', sans-serif; /* Moderni font za ugodnije čitanje */
+    font-family: 'Roboto', sans-serif; /* Moderni font za čitljivost */
     margin: 0;
     padding: 0;
-    line-height: 1.6; /* Poboljšanje čitljivosti */
-    color: #3D3D3D; /* Tamno siva za tekst za bolji kontrast */
+    line-height: 1.7; /* Poboljšana čitljivost */
+    color: #3D3D3D; /* Tamno siva za tekst */
+}
+
+h1, h2, h3 {
+    font-family: 'Georgia', serif; /* Klasičan serif font za naslove */
+    color: #2C3E50; /* Tamna plava za naslove */
+}
+
+h1 {
+    text-align: center; /* Centriranje naslova */
+    font-size: 2.5em; /* Veća veličina fonta za isticanje */
+    color: #3D3D3D; /* Tamnija boja za kontrast */
+    margin-bottom: 40px; /* Dodan veći razmak ispod naslova */
+}
+
+/* Gumbovi za navigaciju (Logout, Register) na desnoj strani */
+.navbar {
+    display: flex;
+    justify-content: flex-end; /* Gumbovi poravnati desno */
+    gap: 10px; /* Razmak između gumba */
+    padding: 10px 20px;
+    margin-bottom: 20px; /* Razmak ispod navigacije */
+}
+
+.navbar a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: white;
+    background-color: #7f8c8d; /* Siva boja gumba */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Dodaj suptilnu sjenu */
+}
+
+.navbar a:hover {
+    background-color: #95a5a6; /* Svjetlija siva na hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Pojačana sjena */
 }
 
 .container {
-    width: 75%; /* Lagano smanjena širina za skladan izgled */
-    margin: 40px auto; /* Centriranje kontejnera s dodatnim razmakom od vrha */
-    padding: 30px; /* Prošireni unutarnji razmak za prozračnost */
-    background-color: #FFFFFF; /* Bijela pozadina za kontrast s pozadinom stranice */
-    border-radius: 12px; /* Više zaobljeni kutovi za moderniji izgled */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Dublja sjena za vizualnu dubinu */
-    transition: box-shadow 0.3s ease; /* Animacija sjene za interakciju */
+    width: 70%; /* Lagano smanjena širina za skladan izgled */
+    margin: 60px auto; /* Centriranje kontejnera s većim razmakom */
+    padding: 40px; /* Prostraniji unutarnji razmak */
+    background-color: #FFFFFF; /* Bijela pozadina */
+    border-radius: 16px; /* Još više zaobljeni kutovi */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Dublja sjena za efekt plutanja */
+    transition: box-shadow 0.3s ease;
 }
 
 .container:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sjena se povećava pri hoveru za zanimljiv efekt */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Pojačani hover efekt */
 }
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Stilizacija gumba */
+.like-button, .edit-button, .delete-button, .comment-button {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
 .like-button {
-    background-color: #4CAF50; /* Svijetlo zelena za Lajkuj */
+    background-color: #3498DB; /* Plava boja */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -32,11 +84,11 @@ body {
 }
 
 .like-button:hover {
-    background-color: #45A049; /* Tamnija zelena za hover efekt */
+    background-color: #2980B9; /* Tamnija plava za hover */
 }
 
 .edit-button {
-    background-color: #FFA500; /* Narančasta za Izmijeni */
+    background-color: #FFB84D; /* Nježnija narančasta */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -45,11 +97,11 @@ body {
 }
 
 .edit-button:hover {
-    background-color: #FF8C00; /* Tamnija narančasta za hover efekt */
+    background-color: #FF9933; /* Tamnija nijansa narančaste */
 }
 
 .delete-button {
-    background-color: #E74C3C; /* Crvena za Obriši */
+    background-color: #E74C3C; /* Crvena */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -58,19 +110,107 @@ body {
 }
 
 .delete-button:hover {
-    background-color: #C0392B; /* Tamnija crvena za hover efekt */
+    background-color: #C0392B; /* Tamnija crvena */
 }
 
 .comment-button {
-    background-color: #3498DB; /* Plava za Dodaj komentar */
+    background-color: #2ECC71; /* Svijetlo zelena za gumb komentara */
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
 
 .comment-button:hover {
-    background-color: #2980B9; /* Tamnija plava za hover efekt */
+    background-color: #27AE60; /* Tamnija zelena */
 }
 
+/* Stilizacija teksta unutar postova */
+.post-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2C3E50;
+}
+
+.post-content {
+    font-size: 18px;
+    color: #34495E;
+    margin-bottom: 30px; /* Veći razmak ispod postova */
+    line-height: 1.8; /* Povećana čitljivost */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-group-item {
+    border: none;
+    padding: 20px 0;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive prilagodbe */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+    
+    .post-title {
+        font-size: 20px;
+    }
+    
+    .post-content {
+        font-size: 16px;
+    }
+    
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    /* Responsive navbar stilovi */
+    .navbar {
+        justify-content: center;
+        gap: 15px; /* Razmak između gumba */
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+      
+    .header h1 {
+        margin-top: 40px;
+        font-size: 2.5em;
+        color: #2C3E50;
+        text-align: center;
+    }
+      
+    .main-content {
+        padding: 40px 0;
+    }
+      
+    .footer {
+        text-align: center;
+        padding: 20px 0;
+        border-top: 1px solid #ddd;
+        margin-top: 40px;
+    }
+
+    h1.moji-postovi {
+        float: right !important;
+        font-size: 2.5em;
+        margin-right: 0;
+        color: #3D3D3D;
+        clear: both;
+    }
+
+    
+    
+}
