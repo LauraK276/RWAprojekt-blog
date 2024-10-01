@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('token'); // Uklonite token iz localStorage
+    this.router.navigate(['/login']); // Preusmjerite na stranicu za prijavu
   }
 }

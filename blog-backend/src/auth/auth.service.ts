@@ -96,6 +96,10 @@ export class AuthService {
       isActive: updatedUser.isActive,
     });
   }
+
+  logout() {
+    localStorage.removeItem('token'); // Uklonite JWT token iz localStorage
+  }
   
   
 }
